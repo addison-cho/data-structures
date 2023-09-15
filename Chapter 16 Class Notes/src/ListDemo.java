@@ -62,7 +62,7 @@ public class ListDemo
         
         /*
          * hasNext method returns true if the list has another element.
-         * Often used in the conditiono f a while list
+         * Often used in the condition of a while list
          */
 
         iterator = staff.listIterator();
