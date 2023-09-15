@@ -65,32 +65,42 @@ public class ListDemo
          * Often used in the conditiono f a while list
          */
 
-         iterator = staff.listIterator();
-         while (iterator.hasNext()) {
+        iterator = staff.listIterator();
+        while (iterator.hasNext()) {
             String n = iterator.next();
             if (n.equals("Juliet")) { 
                                     // DHJ|AT 
                 iterator.remove(); // DH|AT
             }
-         }
+        }
 
-         // DHAT|
+        // DHAT|
 
-         // Enhanced for loops work with linked list
-         for(String n:staff) {
+        // Enhanced for loops work with linked list
+        for(String n:staff) {
             System.out.print(n + " ");
-         }
+        }
         
         
-         System.out.println("Expected: [Diana Harry Albert Tom]");
+        System.out.println("Expected: [Diana Harry Albert Tom]");
 
-         iterator = staff.listIterator();
-         while (iterator.hasNext()) {
+        iterator = staff.listIterator();
+        while (iterator.hasNext()) {
             String n = iterator.next();
             if (n.equals("Harry")) {
                 //staff.remove("Diana");
                 //ConcurrentModificationException, can't modify linkedlist while also using an iterator unless you use the iterator to do it
             }
-         }
+        }
+
+        /* An enhanced for loop AUTOMATICALLY creates an iterator */
+
+        for (String n:staff) {
+            if (n.equals("Harry")) {
+                // staff.add("Charlie"); // also gives a concurrent modifcation error
+            }
+        }
+
+        System.out.println(staff);
     }
 }
