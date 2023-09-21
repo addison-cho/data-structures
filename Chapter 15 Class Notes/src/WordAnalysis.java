@@ -17,11 +17,15 @@ public class WordAnalysis
         Set<String> novelWords = readWords("Chapter 15 Class Notes/src/throughTheLookingGlass.txt");
 
         // print words in novel but not in dictionary
+
         for (String word:novelWords) {
             if(!dictionaryWords.contains(word)) {
                 System.out.println(word);
             }
         }
+
+        // print # of words in novel
+        System.out.println("Total words in novel: " + novelWords.size());
     }
 
     /**
