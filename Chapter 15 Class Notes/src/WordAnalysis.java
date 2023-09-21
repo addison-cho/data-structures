@@ -25,7 +25,16 @@ public class WordAnalysis
         }
 
         // print # of words in novel
-        System.out.println("Total words in novel: " + novelWords.size());
+        System.out.println("# of unique words in novel: " + novelWords.size());
+
+        // # of unique words > than 3 letters
+        Iterator<String> iterator = novelWords.iterator();
+        while (iterator.hasNext()) {
+            if  (iterator.next().length() <= 3) {
+                iterator.remove();
+            }
+        }
+        System.out.println("# of unique words in novel with >3 letters: " + novelWords.size());
     }
 
     /**
