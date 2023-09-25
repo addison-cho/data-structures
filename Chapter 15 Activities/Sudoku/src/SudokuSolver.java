@@ -67,6 +67,11 @@ public class SudokuSolver {
         */
         squares = new ArrayList<>();
 
+        /*
+         * goes through a row at a time, split into groups of three rows
+         * goes through cols, switching which square set is being added to every three
+         * after three rows are run through, add squares and reset all for next three rows
+         */
         for (int squareRow = 0; squareRow < 3; squareRow++) {
 
             int startRow = squareRow*3;
@@ -155,6 +160,7 @@ public class SudokuSolver {
         int squareIndex = nextRow/3*3 + nextCol/3;
         Set<Integer> sq = squares.get(squareIndex);
 
+        // removes duplication nums
         for (int num = 1; num <= 9; num++) {
             if (row.contains(num) || col.contains(num) || sq.contains(num)) {
                 possibleNums.remove(num);
