@@ -6,34 +6,38 @@ import java.io.*;
  * are comma-separated strings of words of the same length.
  * Then print out those strings, in increasing order by
  * the length of their entries.
- * Use the Java 8 merge() method from Java 8 Note 15.1.
+ * Modify Worked Example 15.1.
  */
-public class StringLengthMap2
+public class StringLengthMap
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws FileNotFoundException
     {
-        String filename = "src/test1.txt";
+        String filename = "Chapter 15 Activities/StringLengthMap/src/test1.txt";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
 
             // Create your map here
-            
+            Map<Integer, String> words = new HashMap<>();
+
 
             while (in.hasNext())
             {
                 String word = clean(in.next());
                 Integer len = word.length();
-
-                // Update the map here
-                // Use the Java 8 merge() method
                 
+                words.merge(len, word, (v1, v2) -> v1 + ", " + v2);                
 
 
             }
 
             // Print the strings, in increasing order of their length
             // Use this format: 1: i, a, i
+
+            for (Integer x : words.keySet()) {
+                System.out.println(x.toString() + ": " + words.get(x));
+            }
+
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);

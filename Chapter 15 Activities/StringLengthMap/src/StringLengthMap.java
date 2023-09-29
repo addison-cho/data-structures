@@ -28,18 +28,13 @@ public class StringLengthMap
 
                 // Update the map here
                 // Modify Worked Example 15.1
-                
-                // non-merge method
-                // String x = words.get(len);
-                // if (x == (null)) {
-                //     words.put(len, word);
-                // }
-                // else {
-                //     words.put(len, x + ", " + word);
-                // }
-
-                // merge method
-                words.merge(len, word, (v1, v2) -> v1 + ", " + v2);                
+                String x = words.get(len);
+                if (x == (null)) {
+                    words.put(len, word);
+                }
+                else {
+                    words.put(len, x + ", " + word);
+                }     
 
 
             }
