@@ -8,7 +8,7 @@ import java.io.*;
  * the length of their entries.
  * Modify Worked Example 15.1.
  */
-public class StringLengthMap
+public class StringLengthMap2
 {
     public static void main(String[] args) throws FileNotFoundException
     {
@@ -25,7 +25,7 @@ public class StringLengthMap
             {
                 String word = clean(in.next());
                 Integer len = word.length();
-                
+
                 words.merge(len, word, (v1, v2) -> v1 + ", " + v2);                
 
 

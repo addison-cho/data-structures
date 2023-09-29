@@ -37,7 +37,6 @@ public class StringLengthMap
                 }     
 
 
-
             }
 
             // Print the strings, in increasing order of their length

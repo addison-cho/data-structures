@@ -61,5 +61,6 @@ public class Gradebook
                 done = true;
             }
         }
+        in.close();
     }
 }
