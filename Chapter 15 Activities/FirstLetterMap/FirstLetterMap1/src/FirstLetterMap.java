@@ -32,7 +32,7 @@ public class FirstLetterMap
                 Set<String> set = new HashSet<>();
                 set.add(word);
 
-                words.merge(c, set, (v1, v2) -> {v1.add(word); return v1;});                
+                words.merge(c, set, (v1, v2) -> {v1.addAll(v2); return v1;});                
 
 
             }
@@ -41,7 +41,7 @@ public class FirstLetterMap
             // a: [a, able, aardvark]
             for (Character x : words.keySet()) {
                 System.out.print(x + ": " );
-                System.out.println(words.get(x).sort());
+                System.out.println(words.get(x));
             }
         } catch (FileNotFoundException e)
         {
