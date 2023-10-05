@@ -26,6 +26,8 @@ public class DrivewayDemo
             	testDriveway.print();
                 return;
             }
+
+            testDriveway.print();
         }
     }
 }
