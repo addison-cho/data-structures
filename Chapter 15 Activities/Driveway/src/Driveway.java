@@ -34,7 +34,8 @@ public class Driveway
     public void add(int licensePlate)
     {
         // Complete this method
-        driveway.add(licensePlate);
+        if (! driveway.contains(licensePlate))
+          driveway.push(licensePlate);
 
     }
 
@@ -46,17 +47,18 @@ public class Driveway
     public void remove(int licensePlate)
     {
         // Complete this method
-        while (driveway.peek() != licensePlate) {
-          street.add(driveway.pop());
-        }
+        int plate = driveway.pop();
+        while (plate != licensePlate) {
+          street.push(plate);
+          plate = driveway.pop();
 
-        driveway.pop();
+        }
         
         // shows cars in street
         // print();
         
         while (!street.isEmpty()) { 
-          driveway.add(street.pop());
+          driveway.push(street.pop());
         }
 
     }
