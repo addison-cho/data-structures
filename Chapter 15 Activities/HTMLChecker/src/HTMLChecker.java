@@ -17,16 +17,41 @@ public class HTMLChecker
 {
     public static void main(String[] args)
     {
-        String filename = "src/TagSample1.html";
+        //String filename = "Chapter 15 Activities/HTMLChecker/src/TagSample1.html";
+        String filename = "Chapter 15 Activities/HTMLChecker/src/TagSample2.html";
+        //String filename = "Chapter 15 Activities/HTMLChecker/src/TagSample1.html";
+
+        Stack<String> tags = new Stack<>();
 
         try (Scanner in = new Scanner(new File(filename)))
         {
             // Your code goes here
-            . . .
+            in.useDelimiter(" ");
 
+            while(in.hasNext()) {
+                System.out.println(tags);
+                String x = in.next();
+                if (!x.contains("/")) {
+                    tags.push(x);
+                }
+                else {
+                    System.out.print("Checking: ");
+                    System.out.print(tags.peek());
+                    System.out.println(x);
+                    if (tags.peek().substring(1, tags.peek().indexOf(">")).equals(x.substring(2, x.indexOf(">"))))
+                        tags.pop();
+                }
+            }
+            System.out.println(tags);
 
-        } catch (FileNotFoundException e)
-        {
+            if(tags.size() == 0)
+                System.out.println("True");
+            else
+                System.out.println("False");
+
+        }
+
+        catch (FileNotFoundException e) {
             System.out.println("Cannot open: " + filename);
         }
 
