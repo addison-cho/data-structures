@@ -1,3 +1,4 @@
+import java.util.Queue;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 /**
@@ -12,7 +13,7 @@ import java.util.Scanner;
 public class ToDoList
 {
     // Instance variable(s)
-    . . .
+    Queue<Task> queue;
 
     /**
      * Constructor
@@ -20,7 +21,8 @@ public class ToDoList
     public ToDoList()
     {
         // Complete this
-        . . .
+        queue = new PriorityQueue<>();
+        //run();
     }
 
     /**
@@ -48,6 +50,9 @@ public class ToDoList
             {
                 nextTask();
             }
+            else if (!option.equals("quit")) {
+                System.out.println("Bad command; try again");
+            }
         } 
         while (! option.equals("quit"));
     }
@@ -60,9 +65,14 @@ public class ToDoList
     public void addTask(String optionStr)
     {
         // Complete this method
-        . . .
-            
-            
+        try {
+        int prio = Integer.parseInt(optionStr.substring(4,5));
+        queue.add(new Task(prio, optionStr.substring(5, optionStr.length())));
+        }
+        catch (Exception NumberFormatException) {
+            System.out.println("Bad input; try again");
+        }
+       
     }
 
     /**
@@ -74,13 +84,15 @@ public class ToDoList
         Task next = null;
         
         // Complete this method
-        . . .
-        
+        if (queue.size() > 0)
+            next = queue.remove();
+
         
         if (next == null)
         {
             System.out.println("There are no tasks in the list.");
-        } else
+        }
+        else
         {
             System.out.println(next.getDescription());
         }
