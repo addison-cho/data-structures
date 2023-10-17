@@ -67,13 +67,16 @@ public class LinkedList
     /**
         Returns an iterator for iterating through this list.
         @return an iterator for iterating through this list
-    *
-    public LinkedListIterator iterate() {
-
-    }
     */
+    public ListIterator listIterator() {
+        return new LinkedListIterator();
+    }
 
+    /**
+     * 
+     */
 
+     
 
 
     //Class Node
@@ -192,7 +195,7 @@ public class LinkedList
             if (!isAfterNext) {
                 throw new IllegalStateException();
             }
-            
+
             position.data = element;
         }
 
