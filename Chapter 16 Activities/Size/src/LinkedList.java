@@ -26,7 +26,7 @@ public class LinkedList
     */
     public int size()
     {
-        /* regular method 
+        // regular method 
         Node foo = first;
         int c = 0;
 
@@ -36,30 +36,6 @@ public class LinkedList
         }
 
         return c;
-        */
-
-        // recursive helper
-        if (first == null)
-            return 0;
-
-        count = 0;
-        return size(first);
-    }
-
-
-    /**
-     * Recursive size method
-     * @param obj
-     * @return
-     */
-    private static int size(Node obj) {
-        // initialized in constructor and set to 0 in recursive helper
-        count++;
-
-        if (obj.next == null) 
-            return count;
-
-        return size(obj.next);
     }
 
 
