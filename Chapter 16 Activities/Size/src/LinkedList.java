@@ -9,7 +9,6 @@ import java.util.NoSuchElementException;
 public class LinkedList
 {
     private Node first;
-    private static int count;
 
     /**
         Constructs an empty linked list.
@@ -17,7 +16,6 @@ public class LinkedList
     public LinkedList()
     {
         first = null;
-        count = 0;
     }
 
     /**
