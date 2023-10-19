@@ -41,7 +41,32 @@ public class LinkedList
     */
     public boolean contains(Object obj)
     {
-        // ...
+        /* regular method
+        Node foo = first;
+
+        while (foo != null) {
+            if (foo.data.equals(obj)) 
+                return true;
+            foo = foo.next;
+        }
+
+        return false;
+
+        */
+
+        // recursive helper method
+        return contains(first, obj);
+
+    }
+
+    private static boolean contains(Node start, Object obj) {
+        if (start == null)
+            return false;
+
+        if (start.data.equals(obj))
+            return true;
+
+        return contains(start.next, obj);
     }
 
     /**
