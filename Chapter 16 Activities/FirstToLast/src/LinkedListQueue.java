@@ -23,12 +23,17 @@ public class LinkedListQueue
     */
     public void firstToLast()
     {
-        Node obj = this.head;
-        this.head = this.head.next;
+        if (head!=tail) {
+            tail.next = head;
+            head = head.next;
+            tail.next.next = null;
+        }
+        // Node obj = this.head;
+        // this.head = this.head.next;
 
-        this.tail.next = obj;
-        this.tail = obj;
-        obj.next = null;
+        // this.tail.next = obj;
+        // this.tail = obj;
+        // obj.next = null;
     }
 
     /**
