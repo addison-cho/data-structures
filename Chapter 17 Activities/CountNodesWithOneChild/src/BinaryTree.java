@@ -1,7 +1,3 @@
-//HIDE
-/**
-    A binary tree in which each node has two children.
-*/
 public class BinaryTree
 {
     private Node root;
@@ -101,5 +97,21 @@ public class BinaryTree
         BinaryTree result = new BinaryTree();
         result.root = root.right;
         return result;
+    }
+
+    public int countNodesWithOneChild()
+    {
+        return countNodesWithOneChild(this.root);
+    }
+    public int countNodesWithOneChild(Node currNode)
+    {
+        int count = 0;
+        if ((currNode.left == null && currNode.right != null) ||  (currNode.left != null && currNode.right == null))
+            count++;
+        if (currNode.left != null)
+            count += countNodesWithOneChild(currNode.left);
+        if (currNode.right != null)
+            count += countNodesWithOneChild(currNode.right);
+        return count;
     }
 }
