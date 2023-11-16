@@ -130,11 +130,6 @@ public class BinarySearchTree
         else {
             leastParent.left = least.right;
         }
-
-        
-    }
-
-        
     }
     
     /**
@@ -142,7 +137,8 @@ public class BinarySearchTree
     */
     public void print()
     {   
-        
+        print(this.root);
+        System.out.println();
     }   
 
     /**
@@ -151,7 +147,11 @@ public class BinarySearchTree
     */
     private static void print(Node parent)
     {   
-        
+        if (parent == null) return;
+
+        print(parent.left);
+        System.out.println(parent.data + " ");
+        print(parent.right);
     }
 
     /**
