@@ -71,9 +71,8 @@ public class MorseCode
      */
     private static void addSymbol(char letter, String code)
     {
-        /*
-            !!! INSERT CODE HERE
-        */
+        codeMap.put(letter, code);
+        treeInsert(letter, code);
     }
 
     /**
@@ -85,9 +84,34 @@ public class MorseCode
      */
     private static void treeInsert(char letter, String code)
     {
-        /*
-            !!! INSERT CODE HERE
-        */
+        if (code.equals(" ")) return;
+        
+        TreeNode foo = decodeTree;
+        TreeNode fooParent = null;
+        String copy = String.valueOf(code);
+        Character x = copy.charAt(0);
+
+        while (foo != null && !copy.equals("")) {
+            x = copy.charAt(0);
+
+            fooParent = foo;
+            if (x == '.') {
+                foo = foo.getLeft();
+            }
+            else {
+                foo = foo.getRight();
+            }
+
+            copy = copy.substring(1);
+        }
+
+        TreeNode newNode = new TreeNode(letter);
+        if (x == '.') {
+            fooParent.setLeft(newNode);
+        }
+        else {
+            fooParent.setRight(newNode);
+        }
     }
 
     /**
@@ -100,9 +124,15 @@ public class MorseCode
     {
         StringBuffer morse = new StringBuffer(400);
 
-        /*
-            !!! INSERT CODE HERE
-        */
+        while (!text.equals("")) {
+            Character x = text.charAt(0);
+            x = Character.toUpperCase(x);
+
+            morse.append(codeMap.get(x));
+            morse.append(" ");
+
+            text = text.substring(1);
+        }
 
         return morse.toString();
     }
@@ -116,10 +146,24 @@ public class MorseCode
     public static String decode(String morse)
     {
         StringBuffer text = new StringBuffer(100);
+        TreeNode node = decodeTree;
 
-        /*
-            !!! INSERT CODE HERE
-        */
+        while (!morse.equals("")) {
+            Character x = morse.charAt(0);
+            
+            if (x == '.') {
+                node = node.getLeft();
+            }
+            else if (x == ',') {
+                node = node.getRight();
+            }
+            else {
+                text.append(node.getValue());
+                node = decodeTree;
+            }
+
+            morse = morse.substring(1);
+        }
 
         return text.toString();
     }
