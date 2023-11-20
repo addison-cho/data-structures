@@ -91,7 +91,15 @@ public class MorseCode
         String copy = String.valueOf(code);
         Character x = copy.charAt(0);
 
-        while (foo != null && !copy.equals("")) {
+        while (!copy.equals("")) {
+            if (foo == null) {
+                // add a temporary substitute
+                System.out.println(letter);
+                System.out.println(x);
+                foo = new TreeNode("_");
+            }
+
+
             x = copy.charAt(0);
 
             fooParent = foo;
