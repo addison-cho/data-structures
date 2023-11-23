@@ -21,10 +21,11 @@ public class MorseCode
     public static void start()
     {
         codeMap = new TreeMap<Character, String>();
+        
+        // put a space in the root of the decoding tree
         codeMap.put(' ', ""); // value is "" because spaces are automatically added after each letter (key) is encoded
         decodeTree = new TreeNode(' ', null, null);  // autoboxing
-        // put a space in the root of the decoding tree
-
+        
         addSymbol('A', ".-");
         addSymbol('B', "-...");
         addSymbol('C', "-.-.");
@@ -72,6 +73,7 @@ public class MorseCode
      */
     private static void addSymbol(char letter, String code)
     {
+        // adds symbol to the treemap and the tree
         codeMap.put(letter, code);
         treeInsert(letter, code);
     }
@@ -85,6 +87,7 @@ public class MorseCode
      */
     private static void treeInsert(char letter, String code)
     {
+        // returns since already in treemap & tree
         if (code.equals(" ")) return;
         
         TreeNode foo = decodeTree;
@@ -102,7 +105,8 @@ public class MorseCode
             else {
                 foo = foo.getRight();
             }
-            
+
+            // placeholder node
             if (foo == null) {
                 foo = new TreeNode("_");
                 if (x == '.') {
