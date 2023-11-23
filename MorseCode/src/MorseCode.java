@@ -21,6 +21,7 @@ public class MorseCode
     public static void start()
     {
         codeMap = new TreeMap<Character, String>();
+        codeMap.put(' ', ""); // value is "" because spaces are automatically added after each letter (key) is encoded
         decodeTree = new TreeNode(' ', null, null);  // autoboxing
         // put a space in the root of the decoding tree
 
@@ -92,14 +93,6 @@ public class MorseCode
         Character x = copy.charAt(0);
 
         while (!copy.equals("")) {
-            if (foo == null) {
-                // add a temporary substitute
-                System.out.println(letter);
-                System.out.println(x);
-                foo = new TreeNode("_");
-            }
-
-
             x = copy.charAt(0);
 
             fooParent = foo;
@@ -109,17 +102,21 @@ public class MorseCode
             else {
                 foo = foo.getRight();
             }
+            
+            if (foo == null) {
+                foo = new TreeNode("_");
+                if (x == '.') {
+                    fooParent.setLeft(foo);
+                }
+                else {
+                    fooParent.setRight(foo);
+                }
+            }
 
             copy = copy.substring(1);
         }
 
-        TreeNode newNode = new TreeNode(letter);
-        if (x == '.') {
-            fooParent.setLeft(newNode);
-        }
-        else {
-            fooParent.setRight(newNode);
-        }
+        foo.setValue(letter);
     }
 
     /**
@@ -162,7 +159,7 @@ public class MorseCode
             if (x == '.') {
                 node = node.getLeft();
             }
-            else if (x == ',') {
+            else if (x == '-') {
                 node = node.getRight();
             }
             else {
